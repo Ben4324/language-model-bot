@@ -2,7 +2,7 @@ import discord
 import openai
 import constant
 
-client = discord.Client()
+client = discord.Client(intents=discord.Intents.default())
 TOKEN = constant.DISCORDTOKEN
 openai.api_key = constant.OPENAPITOKEN
 model_engine = "ChatGPT"
@@ -13,9 +13,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    
     if message.author == client.user:
         return
-    if message.content.startswith('!trick'):
+    if message.content == '!trick':
         prompt = message.content[4:]
         response = openai.Completion.create(
             engine=model_engine,
