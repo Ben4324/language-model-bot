@@ -15,7 +15,7 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.content.startswith('!gpt'):
+    if message.content.startswith('!trick'):
         prompt = message.content[4:]
         response = openai.Completion.create(
             engine=model_engine,
